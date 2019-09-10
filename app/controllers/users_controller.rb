@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
+
     def index
         @users = User.all
     end
 
     def show
         @user = User.find(params[:id])
+        @user_pokemon = @user.pokemons
     end
 
     def new
@@ -12,12 +14,9 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.new(user_params)
-        if @user.save
-            redirect_to user_path(@user)
-        else
-            render :new
-        end
+        @user = User.create(user_params)
+        Team.create(user: @user, pokemon: Pokemon.find(params[:user][:pokemon_ids]))
+        redirect_to user_path(@user)
     end
 
     def edit
@@ -27,6 +26,8 @@ class UsersController < ApplicationController
     def update
         @user = User.find(params[:id])
         if @user.update(user_params)
+            @user.teams.destroy_all
+            Team.create(user: @user, pokemon: Pokemon.find(params[:user][:pokemon_ids]))
             redirect_to user_path(@user)
         else
             render :edit
@@ -35,11 +36,11 @@ class UsersController < ApplicationController
 
     def destroy
         @user = User.find(params[:id]).destroy
-        redirect_to user_path
+        redirect_to users_path
     end
 
     private
         def user_params
-            user_params = params.require(:user).permit(:name, :pokemon_id [])
+            user_params = params.require(:user).permit(:name, :pokemon_id)
         end
 end
