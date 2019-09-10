@@ -1,2 +1,8 @@
-<% j = User.all.first %>
-<%= j.pokemons.first.name%>
+<h2>All Users</h2>
+<%Pokemon.all.each do |pokemon| %>
+  <%=pokemon.name%>
+<%end%>
+  <% @users.each do |user| %>
+      <%= link_to user.name, user_path(user) %><br>
+      <%= link_to "Delete", user, method: :delete, data: { confirm: "YOU SURE?!?" } %><br>
+  <% end %>
