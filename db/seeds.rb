@@ -24,17 +24,3 @@ data['results'].each do |p|
     pokemon = Pokemon.new(pokemon_info)
     pokemon.save
 end
-
-user1 = User.create(name:'user1')
-team1 = Team.create(user: user1, pokemon: Pokemon.all.first)
-c = 1
-5.times do 
-    Npc.create(name: "npc#{c}")
-    c+=1
-end
-count = 1
-5.times do 
-    Pack.create(npc: Npc.all.first(count).last, pokemon: Pokemon.all.first(count).last)
-    count += 1
-end
-
