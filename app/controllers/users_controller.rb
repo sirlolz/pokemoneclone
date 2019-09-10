@@ -42,5 +42,4 @@ class UsersController < ApplicationController
         def user_params
             user_params = params.require(:user).permit(:name, :pokemon_id [])
         end
-
 end
