@@ -6,7 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Pokemon.destroy_all
-
+User.destroy_all
+Team.destroy_all
 
 raw_response = RestClient.get('https://pokeapi.co/api/v2/pokemon?limit=151')
 data = JSON.parse(raw_response)
@@ -19,3 +20,7 @@ pokemon_info = {}
         pokemon = Pokemon.new(pokemon_info)
         pokemon.save
     end
+j = User.new(name:'jared')
+j.save
+t = Team.new(user: j, pokemon: Pokemon.all.first)
+t.save
