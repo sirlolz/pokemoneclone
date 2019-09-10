@@ -3,6 +3,7 @@
 <h3>User's name: <%= @user.name %></h3>
 <h3>User's Pokemon: 
     <% @user.pokemons.each do |pokemon|%>
-        <%= link_to pokemon.name, pokemon_path(pokemon) %>
+        <%= pokemon.name %><br>
+        <%= link_to (image_tag pokemon.img), pokemon_path(pokemon) %>
     <%end%>
 </h3>

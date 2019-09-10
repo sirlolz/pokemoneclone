@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2019_09_10_002047) do
     t.string "name"
     t.integer "hp"
     t.integer "att"
+    t.string "img"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
