@@ -1,6 +1,6 @@
 <h1>This is show page for POKEMON</h1>
-
-<h3>Pokemon name: <%= @pokemon.name %></h3>
+<%= image_tag @pokemon.img %><br>
+<p>NAME: <%= @pokemon.name %><p>
 <p>HP: <%= @pokemon.hp %><p>
 <p>ATTACK: <%= @pokemon.att %><p>
 <%= link_to  "BAKC TO USER PAGE", users_path %>
