@@ -3,6 +3,7 @@ class CreateTeams < ActiveRecord::Migration[5.2]
     create_table :teams do |t|
       t.integer :user_id
       t.integer :pokemon_id
+      t.integer :hp
       t.timestamps
     end
   end

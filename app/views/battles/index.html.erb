@@ -1,4 +1,6 @@
+<% c = 1%>
 <% Battle.all.each do |b|%>
-<%= b.user.name%>
-<%= b.npc.name%>
+fight <%= c%>
+<%= b.user.pokemons.first.name%> vs <%= b.npc.pokemons.first.name%><br>
+<% c+=1%>
 <%end%>

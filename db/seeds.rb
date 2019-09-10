@@ -14,7 +14,6 @@ Pack.destroy_all
 raw_response = RestClient.get('https://pokeapi.co/api/v2/pokemon?limit=151')
 data = JSON.parse(raw_response)
 pokemon_info = {}
-<<<<<<< HEAD
 
 data['results'].each do |p|
     pokemon_info[:name] = p['name']
@@ -28,22 +27,7 @@ end
 
 user1 = User.create(name:'user1')
 team1 = Team.create(user: user1, pokemon: Pokemon.all.first)
-
-=======
-    data['results'].each do |pokemon|
-        pokemon_info[:name] = pokemon['name']
-        pokemon_stats = JSON.parse(RestClient.get(pokemon['url']))
-        pokemon_info[:hp] = pokemon_stats['stats'][5]['base_stat']
-        pokemon_info[:att] = pokemon_stats['stats'][4]['base_stat']/2
-        pokemon = Pokemon.new(pokemon_info)
-        pokemon.save
-    end
-j = User.new(name:'jared')
-j.save
-t = Team.new(user: j, pokemon: Pokemon.all.first)
-t.save
-c=1
->>>>>>> jared
+c = 1
 5.times do 
     Npc.create(name: "npc#{c}")
     c+=1
