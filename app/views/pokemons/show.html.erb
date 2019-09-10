@@ -1,0 +1,6 @@
+<h1>This is show page for POKEMON</h1>
+
+<h3>Pokemon name: <%= @pokemon.name %></h3>
+<% @user.pokemons.each do |pokemon| %>
+    <h3>User Pokemon: <%= pokemon.name %></h3>
+<% end %>
