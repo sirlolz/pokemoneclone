@@ -11,9 +11,13 @@ class NpcsController < ApplicationController
     end
 
     def create
-        @npc = Npc.create(name: params[:npc][:name])
-        Pack.create(npc: @npc, pokemon: Pokemon.find(params[:npc][:pokemon_ids]))
-        redirect_to npc_path(@npc)
+        @npc = Npc.new(name: params[:npc][:name])
+        if @npc.save
+            Pack.create(npc: @npc, pokemon: Pokemon.find(params[:npc][:pokemon_ids]))
+            redirect_to npc_path(Npc.all.last)
+        else
+            render :new
+        end
     end
 
     def destroy
