@@ -1,6 +1,8 @@
 <h1>This is show page for USERS</h1>
 
-<h3>User name: <%= @user.name %></h3>
-<% @user.pokemons.each do |pokemon|%>
-    <h3>User Pokemon: <%= pokemon.name %></h3>
-<%end%>
+<h3>User's name: <%= @user.name %></h3>
+<h3>User's Pokemon: 
+    <% @user.pokemons.each do |pokemon|%>
+        <%= link_to pokemon.name, pokemon_path(pokemon) %>
+    <%end%>
+</h3>
