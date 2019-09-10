@@ -13,8 +13,9 @@ class NpcsController < ApplicationController
     def create
         @npc = Npc.new(name: params[:npc][:name])
         if @npc.save
-            Pack.create(npc: @npc, pokemon: Pokemon.find(params[:npc][:pokemon_ids]))
-            redirect_to npc_path(Npc.all.last)
+            pack_instance = Pack.create(npc: @npc, pokemon: Pokemon.find(params[:npc][:pokemon_ids]))
+            pack_instance.update(hp: pack_instance.pokemon.hp)
+            redirect_to npc_path(@npc)
         else
             render :new
         end

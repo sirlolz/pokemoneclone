@@ -15,8 +15,8 @@ class UsersController < ApplicationController
 
     def create
         @user = User.create(user_params)
-        team = Team.create(user: @user, pokemon: Pokemon.find(params[:user][:pokemon_ids]))
-        team.update(hp: team.pokemon.hp)
+        team_instance = Team.create(user: @user, pokemon: Pokemon.find(params[:user][:pokemon_ids]))
+        team_instance.update(hp: team_instance.pokemon.hp)
         redirect_to user_path(@user)
     end
 

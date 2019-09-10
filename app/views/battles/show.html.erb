@@ -1,0 +1,12 @@
+<% @battle.user.teams.each do |team|%>
+trainer: <%= team.user.name%>
+<%= team.pokemon.name%><br>
+<%= team.hp%><br><br>
+<% end%>
+
+<% @battle.npc.packs.each do |pack|%>
+enemy: <%=pack.npc.name%>
+<%=pack.pokemon.name%>
+<%=pack.hp%>
+<%end%>
+<%= link_to "attack", "/battles/#{@battle.id}/attack", method: :patch%>

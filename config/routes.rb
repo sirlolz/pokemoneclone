@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :pokemons
   resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get '/users/:id/battle', to: 'users#battle'
+  # get 'battles/:id/attack', to: 'battles#attack'
+  patch 'battles/:id/attack', to: 'battles#attack'
 end
