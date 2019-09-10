@@ -1,11 +1,11 @@
 <%= link_to 'npc home page', npcs_path%><br>
-<%= link_to 'Delete', npc_path(@npc), method: :delete %> 
+<%= link_to 'Delete', npc_path(@npc), method: :delete %> <br>
+<%= link_to 'edit', "/npcs/#{@npc.id}/edit"%>
 <%= @npc.name%>
 <ul>
-<% @npc.pokemons.each do |pokemon|%>
-
-<li>
-<%=link_to pokemon.name, pokemon_path(pokemon)%>
-</li>
-<% end%>
+    <% @npc.pokemons.each do |pokemon|%>
+        <li>
+            <%=link_to pokemon.name, pokemon_path(pokemon)%>
+        </li>
+    <% end%>
 </ul>

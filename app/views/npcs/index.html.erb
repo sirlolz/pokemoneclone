@@ -1,5 +1,6 @@
+<%= link_to 'new npc', '/npcs/new'%><br>
 <% Npc.all.each do |npc|%>
-<%= link_to npc.name, npc_path(npc)%>
+<%= link_to npc.name, npc_path(npc)%> <span> <%= link_to 'edit npc', "npcs/#{npc.id}/edit"%></span>
 <ul>
 <% npc.pokemons.each do |pokemon|%>
 
@@ -8,4 +9,5 @@
 </li>
 <%end%>
 </ul>
+
 <% end%>
