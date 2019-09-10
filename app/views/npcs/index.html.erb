@@ -1,0 +1,11 @@
+<% Npc.all.each do |npc|%>
+<%= link_to npc.name, npc_path(npc)%>
+<ul>
+<% npc.pokemons.each do |pokemon|%>
+
+<li>
+<%=pokemon.name%>
+</li>
+<%end%>
+</ul>
+<% end%>

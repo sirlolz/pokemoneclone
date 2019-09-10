@@ -1,0 +1,5 @@
+<%= form_for(@npc) do |f|%>
+<%= f.text_field :name%>
+<%=collection_select(:npc, :pokemon_ids, Pokemon.all, :id, :name, prompt: true)%>
+<%= f.submit "create npc"%>
+<%end%>
