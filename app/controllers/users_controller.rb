@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 
     def create
         @user = User.create(user_params)
+        session[:user_id] = @user.id
         team_instance = Team.create(user: @user, pokemon: Pokemon.find(params[:user][:pokemon_ids]))
         team_instance.update(hp: team_instance.pokemon.hp)
         redirect_to user_path(@user)
@@ -27,6 +28,7 @@ class UsersController < ApplicationController
     def update
         @user = User.find(params[:id])
         if @user.update(user_params)
+            session[:user_id] = @user.id
             @user.teams.destroy_all
             Team.create(user: @user, pokemon: Pokemon.find(params[:user][:pokemon_ids]))
             redirect_to user_path(@user)

@@ -7,3 +7,5 @@
         <%= link_to (image_tag pokemon.img), pokemon_path(pokemon) %>
     <%end%>
 </h3>
+<%= link_to 'READY TO BATTLE?', '/battles/new', id: 'battle' %>
+<%= session[:id]%>

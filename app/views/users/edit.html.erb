@@ -18,7 +18,7 @@
     <%= f.text_field :name %><br> 
 
     <label for="user_pokemon"> user pokemon: </label>
-    <%= collection_select(:user, :pokemon_ids, @user.pokemons, :id, :name, prompt: "select your pokemon") %>
+    <%= collection_select(:user, :pokemon_ids, Pokemon.all, :id, :name, prompt: "select your pokemon") %>
 
     <%= f.submit %>
 <% end %>

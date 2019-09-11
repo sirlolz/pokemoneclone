@@ -6,8 +6,12 @@ class BattlesController < ApplicationController
         @battle = Battle.new
     end
     def create
-        battle = Battle.create(user_id: params[:battle][:user_id], npc_id: params[:battle][:npc_id])
+        if battle = Battle.create(user_id: session[:user_id], npc_id: params[:battle][:npc_id]).valid?
+        battle = Battle.create(user_id: session[:user_id], npc_id: params[:battle][:npc_id])
         redirect_to battle_path(battle)
+        else
+            redirect_to '/battles/new'
+        end
     end
     def show
         @battle = Battle.find(params[:id])

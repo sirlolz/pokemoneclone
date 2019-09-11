@@ -13,24 +13,12 @@ class Battle < ApplicationRecord
         npc_hp.update(hp: npc_hp.hp -= user_damage)
     end
     def alive
-        if user.teams.first.hp > 0 && npc.packs.first.hp > 0
-            true
-        else
-            false
-        end
+        user.teams.first.hp > 0 && npc.packs.first.hp > 0
     end
     def win
-        if user.teams.first.hp > 0 && npc.packs.first.hp < 0
-            true
-        else
-            false
-        end
+        user.teams.first.hp > 0 && npc.packs.first.hp < 0
     end
     def lose
-        if user.teams.first.hp < 0 && npc.packs.first.hp > 0
-            true
-        else
-            false
-        end
+        user.teams.first.hp < 0 && npc.packs.first.hp > 0
     end
 end

@@ -1,6 +1,6 @@
+Select your opponent
+
 <%= form_for @battle do |f|%>
-<%= collection_select(:battle, :user_id, User.all, :id, :name, prompt: "select user") %>
 <%= collection_select(:battle, :npc_id, Npc.all, :id, :name, prompt: "select npc") %>
 <%= f.submit 'start battle'%>
 <% end%>
-<%= User.all.first.name%>
