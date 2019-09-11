@@ -1,4 +1,5 @@
 class BattlesController < ApplicationController
+
     def index
     end
     def new
@@ -14,12 +15,7 @@ class BattlesController < ApplicationController
 
     def attack
         battle = Battle.find(params[:id])
-        user_damage = battle.user.teams.first.pokemon.att
-        npc_damage = battle.npc.packs.first.pokemon.att
-        user_hp = battle.user.teams.first
-        npc_hp = battle.npc.packs.first
-        user_hp.update(hp: user_hp.hp -= npc_damage)
-        npc_hp.update(hp: npc_hp.hp -= user_damage)
+        battle.fight
         redirect_to battle_path(battle)
     end
 end
