@@ -16,6 +16,12 @@ class BattlesController < ApplicationController
     def attack
         battle = Battle.find(params[:id])
         battle.fight
+        if battle.alive
         redirect_to battle_path(battle)
+        elsif battle.win
+            render plain: "you win"
+        elsif battle.lose
+            render plain: "you lose"
+        end
     end
 end
