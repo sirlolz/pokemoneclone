@@ -23,8 +23,10 @@ class BattlesController < ApplicationController
         if battle.alive
         redirect_to battle_path(battle)
         elsif battle.win
+            battle.reset_stats
             render plain: "you win"
         elsif battle.lose
+            battle.reset_stats
             render plain: "you lose"
         end
     end
