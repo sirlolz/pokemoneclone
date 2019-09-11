@@ -1,23 +1,37 @@
+<!doctype html>
 
-<% if @user.errors.any? %>
-<div id="error_explanation">
-    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
 
-    <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-    <% end %>
-    </ul>
-</div>
+  <title>Show Users</title>
+  <meta name="User Index Page" content="User_Index">
+  <meta name="user" content="">
+  <link rel="/stylesheets/users.scss">
 
-<% end %>
-
-<h3>User's name: <%= @user.name %></h3>
-<h3>User's Pokemon: 
-    <% @user.pokemons.each do |pokemon|%>
-        <%= pokemon.name %><br>
-        <%= link_to (image_tag pokemon.img), pokemon_path(pokemon) %>
-    <%end%>
-</h3>
-<%= link_to 'READY TO BATTLE?', '/battles/new', id: 'battle' %>
-<%= session[:id]%>
+</head>
+    <body>
+        <h1>USER SHOW PAGE</h1>
+        
+        <% if @user.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+        
+            <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+            </ul>
+        </div>
+        
+        <% end %>
+        
+        <h3>User's name: </h3> <p><%= @user.name %></p>
+        <h3>User's Pokemon: </h3>
+            <% @user.pokemons.each do |pokemon|%>
+                <%= pokemon.name %></p> <%= link_to (image_tag pokemon.img), pokemon_path(pokemon) %>
+            <%end%><br>
+        <%= link_to 'READY TO BATTLE?', '/battles/new', id: 'battle_button' %>
+        <%= session[:id]%>
+    </body>
+</html>

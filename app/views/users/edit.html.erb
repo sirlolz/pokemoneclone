@@ -1,24 +1,39 @@
-<% if @user.errors.any? %>
-<div id="error_explanation">
-  <h2>
-    <%= pluralize(@user.errors.count, "error") %>
-    prohibited this user from being saved:
-  </h2>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>User Index</title>
+    <meta name="user_index_page" content="user_index">
+    <link rel="/stylesheets/users.scss">
+  </head>
+  
+  <body>
+    <h1>USER EDIT PAGE</h1>
+    
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@user.errors.count, "error") %>
+        prohibited this user from being saved:
+      </h2>
 
-  <ul>
-  <% @user.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
   <% end %>
-  </ul>
-</div>
-<% end %>
 
-<%= form_for (@user) do |f| %>
+  <%= form_for (@user) do |f| %>
     <%= f.label :name, "name" %>
     <%= f.text_field :name %><br> 
 
-    <label for="user_pokemon"> user pokemon: </label>
+    <label for="user_pokemon"> User's pokemon: </label>
     <%= collection_select(:user, :pokemon_ids, Pokemon.all, :id, :name, prompt: "select your pokemon") %>
 
     <%= f.submit %>
-<% end %>
+  <% end %>
+
+  </body>
+</html>

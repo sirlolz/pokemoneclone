@@ -1,11 +1,30 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-body { text-align: center}
-#battle {
+
+
+body {
+    background-image: url("index_background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    // text-align: center;
+    font-family: "PokeFont";
+}
+
+h1, h2, h3, h4 {
+    color: rgb(255, 255, 255);
+}
+
+#battle_button {
     border: solid;
-    border-color: red;
-    background: black;
-    color: blue;
-    text-decoration: none;
+    padding: 1%;
+    margin: 2 px;
+    border-color: none;
+    background-color: none;
+    font-style: italic;
+}
+
+#error_explanation {
+    color: red;
 }

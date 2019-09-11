@@ -1,5 +1,4 @@
 <h2>All Pokemon</h2>
   <% @pokemons.each do |pokemon| %>
-  
-      <%= link_to pokemon.name, pokemon_path(pokemon) %><br>
+      <%= link_to (image_tag pokemon.img), pokemon_path(pokemon) %>
   <% end %>
