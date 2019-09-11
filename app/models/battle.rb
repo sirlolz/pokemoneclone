@@ -24,4 +24,12 @@ class Battle < ApplicationRecord
     def lose
         user.teams.first.hp < 0 && npc.packs.first.hp > 0
     end
+    def reset_stats
+        user.teams.each do |team|
+            team.update hp: team.pokemon.hp
+        end
+        npc.packs.each do |team|
+            team.update hp: team.pokemon.hp
+        end
+    end
 end
