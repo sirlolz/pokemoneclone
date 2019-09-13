@@ -10,6 +10,9 @@
   </head>
 
   <body>
+    <% if !session[:id] && !current_page?('/')%>
+      <%= link_to 'goto login', root_path%>
+    <%end%>
     <% if session[:id] %>
       <div class="nav">
         <%= link_to  "logout", logout_path, method: 'post', id: 'logout_link' %>

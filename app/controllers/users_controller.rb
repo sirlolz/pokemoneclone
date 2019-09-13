@@ -38,7 +38,7 @@ class UsersController < ApplicationController
         @user = User.find(current_user_id)
         if @user.update(user_params)
             @user.teams.destroy_all
-            team_insace = Team.create(user: @user, pokemon: Pokemon.find(params[:user][:pokemon_ids]))
+            team_instance = Team.create(user: @user, pokemon: Pokemon.find(params[:user][:pokemon_ids]))
             team_instance.update(hp: team_instance.pokemon.hp)
             redirect_to user_path(@user)
         else
