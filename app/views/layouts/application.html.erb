@@ -10,15 +10,18 @@
   </head>
 
   <body>
-    <% if !session[:id] && !current_page?('/')%>
-      <%= link_to 'goto login', root_path%>
-    <%end%>
-    <% if session[:id] %>
-      <div class="nav">
-        <%= link_to  "logout", logout_path, method: 'post', id: 'logout_link' %>
-        <%= link_to "home", user_path(session[:id]), id: 'send_session_user_home_link' %>
-      </div>
-    <%end%>
+    <div class="nav">
+      <% if !session[:id]%>
+        <% if !current_page?('/')%>
+          <%= link_to 'goto login', root_path%>
+        <%end%>
+         <%= link_to "new user", new_user_path%>
+      <%end%>
+      <% if session[:id] %>
+          <%= link_to  "logout", logout_path, method: 'post', id: 'logout_link' %>
+          <%= link_to "home", user_path(session[:id]), id: 'send_session_user_home_link' %>
+      <%end%>
+    </div>
       <%= yield %>
   </body>
 </html>

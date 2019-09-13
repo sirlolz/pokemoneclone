@@ -18,7 +18,12 @@
     font-family: "PokeFont";
     src: url('P_Solid.ttf');
 }
-
+.nav { 
+    text-decoration: none;
+    color: blue;
+    position: absolute;
+    z-index: 0;
+    background-color: black;}
 
 body {
     background-position: center;
