@@ -1,6 +1,26 @@
-<h2>All Users</h2>
-<%= link_to 'new user', new_user_url%>
-  <% @users.each do |user| %>
-      <%= link_to user.name, user_path(user) %><br>
-      <%= link_to "Delete", user, method: :delete, data: { confirm: "YOU SURE?!?" } %><br>
-  <% end %>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>LETS BEGIN YOUR JOURNEY</title>
+    <meta name="user_index_page" content="user_index">
+    <link rel="/stylesheets/users.scss">
+  </head>
+  
+  <body>
+    <video autoplay muted loop id="myVideo">
+        <source src="https://media.giphy.com/media/ORDZ7BedOnUuZJsEqf/giphy.mp4" type="video/mp4">
+    </video>
+  
+    <div id="main_content">
+      <h1 id="welcome_msg"> notPokemon :') </h1><br>
+      
+      <%= link_to 'create new user', new_user_url, id: "create_new_user_link"%><br>
+        <% @users.each do |user| %>
+          <h3 id="user_name_link"><%= link_to user.name, user_path(user), id: "link_to_user_name"%></h3>
+          <%= link_to "delete user", user, method: :delete, data: { confirm: "YOU SURE?!?" }, id: "delete_user_link"%>
+      <% end %>
+    </div>
+    
+    </body>
+</html>

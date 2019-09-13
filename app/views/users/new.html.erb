@@ -1,26 +1,46 @@
-<h2>choose a pokemon and enter your name to start playing</h2>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
 
-<% if @user.errors.any? %>
-<div id="error_explanation">
-  <h2>
-    <%= pluralize(@user.errors.count, "error") %>
-    prohibited this user from being saved:
-  </h2>
+  <title>New Users</title>
+  <meta name="User Index Page" content="User_Index">
+  <meta name="user" content="">
+  <link rel="/stylesheets/users.scss" type="text/css">
+  
+</head>
 
-  <ul>
-  <% @user.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-  <% end %>
-  </ul>
-</div>
-<% end %>
+<body>
+    <div class="container">
+      <div class="split left">
+        <!--error msg -->
+          <div class="error_msg">
+            <% if @user.errors.any? %>
+              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+                <% @user.errors.full_messages.each do |msg| %>
+                  <h3><%= msg %></h3>
+                <% end %>
+            <% end %>
+          </div> <!-- end of error msg -->
 
-<%= form_for (@user) do |f| %>
-    <%= f.label :name, "name" %>
-    <%= f.text_field :name, placeholder: 'enter name' %><br> 
+          <div id="new_user_form">
+            <%= form_for (@user) do |f| %>
+              <%= f.label :name, "what's your name:", id: "label_for_name" %>
+              <%= f.text_field :name, placeholder: 'enter a name', id: "text_field_for_name"%><br>
 
-    <label for="user_pokemon"> Select your pokemon: </label>
-    <%= collection_select(:user, :pokemon_ids, Pokemon.all, :id, :name) %>
-    
-    <p><%= f.submit "Lets Start Playing"%></p>
-<% end %>
+              <label for="user_pokemon"> Select your pokemon: </label>
+              <%= collection_select(:user, :pokemon_ids, Pokemon.all, :id, :name) %>
+
+              <p><%= f.submit "Lets Start Playing", id: "submit_user_button_on_new"%></p>
+            <% end %>
+          </div> <!-- end of form -->
+      </div> <!--end of split left-->
+
+      <div class="split right">
+          <% Pokemon.all.each do |pokemon| %>
+            <%= link_to (image_tag pokemon.img), pokemon_path(pokemon), id: "pokemon_new"%>
+          <%end%>
+      </div>
+    </div> <!-- end of container -->
+</body>
+</html>

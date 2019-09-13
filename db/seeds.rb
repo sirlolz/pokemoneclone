@@ -24,3 +24,11 @@ data['results'].each do |p|
     pokemon = Pokemon.new(pokemon_info)
     pokemon.save
 end
+
+counter = 1
+
+10.times do
+    npc = Npc.create(name: "npc#{counter}")
+    Pack.create(npc_id: npc.id, pokemon_id: counter, hp: Pokemon.find(counter).hp)
+    counter +=1
+end
