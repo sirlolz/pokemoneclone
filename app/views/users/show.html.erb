@@ -32,6 +32,5 @@
                 <%= pokemon.name %></p> <%= link_to (image_tag pokemon.img), pokemon_path(pokemon) %>
             <%end%><br>
         <%= link_to 'READY TO BATTLE?', '/battles/new', id: 'battle_button' %>
-        <%= session[:id]%>
     </body>
 </html>

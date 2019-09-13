@@ -15,19 +15,47 @@
  */
  
  @font-face {
-    font-family: "PokeFont";
-    src: url('P_Solid.ttf');
+    font-family: "PFHollow";
+    src: url('P_Hollow.ttf')
 }
-.nav { 
+ 
+@font-face {
+    font-family: "PFSolid";
+    src: url('P_Solid.ttf')
+}
+
+#root_create_user_link {
+    text-align: center;
     text-decoration: none;
-    color: blue;
-    
-    z-index: 0;
-    background-color: black;}
+    font-family: "PFSolid";
+    margin-right: 1%;
+}
+
+#send_session_user_home_link, #logout_link, #root_log_in_link {
+    margin-right: 1%;
+    font-family: "PFSolid";
+    text-decoration: none;
+}
+#send_session_user_home_link:hover, #root_create_user_link:hover, #logout_link:hover, #root_log_in_link:hover {
+    font-family: "PFHollow";
+}
+
+#delete_user_link {
+    text-decoration: none;
+    font-size: 100%;
+    font-family: "PFSolid";
+    padding-left: 10%;
+    text-align: center;
+    color: #e64110;
+  }
+  #delete_user_link:hover {
+    color: #ffd510;
+    font-family: "PFHollow";
+  }
 
 body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto;
-    font-family: "PokeFont";
+    font-family: "PFSolid";
 }

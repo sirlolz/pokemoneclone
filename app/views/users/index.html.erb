@@ -8,18 +8,17 @@
   </head>
   
   <body>
-    <video autoplay muted loop id="myVideo">
-        <source src="https://media.giphy.com/media/ORDZ7BedOnUuZJsEqf/giphy.mp4" type="video/mp4">
-    </video>
   
     <div id="main_content">
-      <h1 id="welcome_msg"> notPokemon :') </h1><br>
-      
-      <%= link_to 'create new user', new_user_url, id: "create_new_user_link"%><br>
-        <% @users.each do |user| %>
-          <h3 id="user_name_link"><%= link_to user.name, user_path(user), id: "link_to_user_name"%></h3>
-          <%= link_to "delete user", user, method: :delete, data: { confirm: "YOU SURE?!?" }, id: "delete_user_link"%>
-      <% end %>
+        <div id= "user_related">
+          <%= link_to 'create new user', new_user_url, id: "create_new_user_link"%><br>
+          <% @users.each do |user| %>
+            <div id="user_name_link">
+              <%= link_to user.name, user_path(user), id: "link_to_user_name"%>
+              <span id="delete_user_link"><%= link_to "delete #{user.name}", user, method: :delete, data: { confirm: "YOU SURE?!?" }%></span>
+            </div>
+        <% end %>
+        </div>
     </div>
     
     </body>
