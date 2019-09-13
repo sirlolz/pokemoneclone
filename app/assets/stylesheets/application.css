@@ -18,3 +18,11 @@
     font-family: "PokeFont";
     src: url('P_Solid.ttf');
 }
+
+
+body {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    font-family: "PokeFont";
+}

@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(name: params[:user][:name])
-
+        
         if @user.save
             session[:user_id] = @user.id
             team_instance = Team.create(user: @user, pokemon: Pokemon.find(params[:user][:pokemon_ids]))

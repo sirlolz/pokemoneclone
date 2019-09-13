@@ -2,17 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>User Index</title>
+    <title>LETS BEGIN YOUR JOURNEY</title>
     <meta name="user_index_page" content="user_index">
     <link rel="/stylesheets/users.scss">
   </head>
-
-    <body>
-      <h1 class="poke_font">All Users</h1><br>
-      <%= link_to 'create new user', new_user_url, id: "new_user_button"%><br>
+  
+  <body>
+    <video autoplay muted loop id="myVideo">
+        <source src="https://media.giphy.com/media/ORDZ7BedOnUuZJsEqf/giphy.mp4" type="video/mp4">
+    </video>
+  
+    <div id="main_content">
+      <h1 id="welcome_msg"> notPokemon :') </h1><br>
+      
+      <%= link_to 'create new user', new_user_url, id: "create_new_user_link"%><br>
         <% @users.each do |user| %>
-            <h3><%= link_to user.name, user_path(user) %></h3><br>
-            <%= link_to "delete user", user, method: :delete, data: { confirm: "YOU SURE?!?" } %><br>
-        <% end %>
+          <h3 id="user_name_link"><%= link_to user.name, user_path(user), id: "link_to_user_name"%></h3>
+          <%= link_to "delete user", user, method: :delete, data: { confirm: "YOU SURE?!?" }, id: "delete_user_link"%>
+      <% end %>
+    </div>
+    
     </body>
 </html>
