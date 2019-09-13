@@ -21,7 +21,7 @@
 .nav { 
     text-decoration: none;
     color: blue;
-    position: absolute;
+    
     z-index: 0;
     background-color: black;}
 
