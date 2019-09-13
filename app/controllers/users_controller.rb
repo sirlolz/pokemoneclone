@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     end
 
     def update
-        @user = User.find(current_user_id])
+        @user = User.find(current_user_id)
         if @user.update(user_params)
             @user.teams.destroy_all
             team_insace = Team.create(user: @user, pokemon: Pokemon.find(params[:user][:pokemon_ids]))
