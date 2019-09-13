@@ -10,6 +10,12 @@
   </head>
 
   <body>
-    <%= yield %>
+    <% if session[:id] %>
+      <div class="nav">
+        <%= link_to  "logout", logout_path, method: 'post', id: 'logout_link' %>
+        <%= link_to "home", user_path(session[:id]), id: 'send_session_user_home_link' %>
+      </div>
+    <%end%>
+      <%= yield %>
   </body>
 </html>

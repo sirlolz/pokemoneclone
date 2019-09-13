@@ -3,5 +3,8 @@
 <p>NAME: <%= @pokemon.name %><p>
 <p>HP: <%= @pokemon.hp %><p>
 <p>ATTACK: <%= @pokemon.att %><p>
-<%= link_to  "BAKC TO POKEMON PAGE", pokemons_path %>
-<%= link_to  "BAKC TO USERS PAGE", users_path %>
+<%= link_to  "BACK TO POKEMON PAGE", pokemons_path %><br>
+
+<% if session[:id] %>
+    <%= link_to  "BACK TO USERS PAGE", user_path(session[:id]) %>
+<%end%>

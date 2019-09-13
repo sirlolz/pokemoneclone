@@ -5,25 +5,29 @@ class Battle < ApplicationRecord
 
     def fight
         user_damage = self.user.teams.first.pokemon.att
-        npc_damage = self.npc.packs.first.pokemon.att
-        user_hp = self.user.teams.first
-        npc_hp = self.npc.packs.first
+        npc_damage = self.npc.packs.first.pokemon.att        
+        @user_hp = self.user.teams.last
+        @npc_hp = self.npc.packs.first
 
-        user_hp.update(hp: user_hp.hp -= npc_damage)
-        npc_hp.update(hp: npc_hp.hp -= user_damage)
+        @npc_hp.update(hp: @npc_hp.hp -= user_damage)
+        
+        if @npc_hp.hp > 0 
+            @user_hp.update(hp: @user_hp.hp -= npc_damage)
+        end
     end
 
     def alive
-        user.teams.first.hp > 0 && npc.packs.first.hp > 0
+        @user_hp.hp > 0 && @npc_hp.hp > 0
     end
 
     def win
-        user.teams.first.hp > 0 && npc.packs.first.hp < 0
+        @user_hp.hp > 0 && @npc_hp.hp < 0
     end
 
     def lose
-        user.teams.first.hp < 0 && npc.packs.first.hp > 0
+        @user_hp.hp < 0 && @npc_hp.hp > 0
     end
+
     def reset_stats
         user.teams.each do |team|
             team.update hp: team.pokemon.hp

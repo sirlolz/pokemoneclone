@@ -1,18 +1,21 @@
 class BattlesController < ApplicationController
-
     def index
+        
     end
+
     def new
         @battle = Battle.new
     end
+
     def create
-        if battle = Battle.create(user_id: session[:user_id], npc_id: params[:battle][:npc_id]).valid?
-        battle = Battle.create(user_id: session[:user_id], npc_id: params[:battle][:npc_id])
-        redirect_to battle_path(battle)
+        if Battle.create(user_id: current_user_id, npc_id: params[:battle][:npc_id]).valid?
+            battle = Battle.create(user_id: current_user_id, npc_id: params[:battle][:npc_id])
+            redirect_to battle_path(battle)
         else
             redirect_to '/battles/new'
         end
     end
+
     def show
         @battle = Battle.find(params[:id])
     end
@@ -20,8 +23,9 @@ class BattlesController < ApplicationController
     def attack
         battle = Battle.find(params[:id])
         battle.fight
+
         if battle.alive
-        redirect_to battle_path(battle)
+            redirect_to battle_path(battle)
         elsif battle.win
             battle.reset_stats
             render plain: "you win"
@@ -30,4 +34,5 @@ class BattlesController < ApplicationController
             render plain: "you lose"
         end
     end
+
 end
